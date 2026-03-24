@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Песочная терапия | Творчество против зависимости</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <style>
+        /* Дополнительные стили для страницы песочной терапии */
+        .why-help {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-radius: 28px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 6px solid #f59e0b;
+        }
+        
+        .why-help h2 {
+            color: #92400e;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .why-help ul {
+            list-style: none;
+            margin: 0;
+        }
+        
+        .why-help li {
+            padding: 0.6rem 0 0.6rem 1.8rem;
+            position: relative;
+            color: #78350f;
+            line-height: 1.4;
+        }
+        
+        .why-help li::before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+        }
+        
+        .weekly-plan-sand {
+            background: white;
+            border-radius: 28px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e9e4ff;
+        }
+        
+        .weekly-plan-sand h2 {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .plan-table-sand {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .plan-table-sand th {
+            background: var(--primary-light);
+            color: white;
+            padding: 12px 16px;
+            font-weight: 600;
+            text-align: left;
+        }
+        
+        .plan-table-sand td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e9e4ff;
+            vertical-align: top;
+        }
+        
+        .plan-table-sand tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .plan-table-sand tr:hover {
+            background: #faf5ff;
+        }
+        
+        .day-cell {
+            font-weight: 600;
+            color: var(--primary-dark);
+            width: 25%;
+        }
+        
+        .task-cell {
+            width: 75%;
+        }
+        
+        /* Стили для слайдера с горизонтальными блоками и кнопками */
+        .sand-activities-swiper {
+            margin: 2rem 0;
+            padding-bottom: 3rem;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .swiper-button-prev,
+        .swiper-button-next {
+            background: var(--primary-light);
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .swiper-button-prev::after,
+        .swiper-button-next::after {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .swiper-button-prev:hover,
+        .swiper-button-next:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+        
+        .swiper-button-prev.swiper-button-disabled,
+        .swiper-button-next.swiper-button-disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .activity-slide {
+            height: auto;
+        }
+        
+        .activity-horizontal-card {
+            display: flex;
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #e9e4ff;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .activity-horizontal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-light);
+        }
+        
+        .activity-image {
+            flex: 0 0 280px;
+            overflow: hidden;
+        }
+        
+        .activity-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .activity-horizontal-card:hover .activity-image img {
+            transform: scale(1.05);
+        }
+        
+        .activity-content {
+            flex: 1;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .activity-content h4 {
+            color: var(--primary-dark);
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .activity-content p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .activity-content ul {
+            margin-left: 1.2rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0;
+        }
+        
+        .activity-content li {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 0.3rem;
+        }
+        
+        .activity-content .instruction-list {
+            margin-top: 0.8rem;
+        }
+        
+        .instruction-list li {
+            list-style-type: none;
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .instruction-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .swiper-pagination-bullet {
+            background: var(--primary-light);
+            opacity: 0.5;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background: var(--primary);
+            opacity: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .swiper-button-prev,
+            .swiper-button-next {
+                width: 36px;
+                height: 36px;
+            }
+            
+            .swiper-button-prev::after,
+            .swiper-button-next::after {
+                font-size: 14px;
+            }
+            
+            .activity-horizontal-card {
+                flex-direction: column;
+            }
+            
+            .activity-image {
+                flex: none;
+                height: 200px;
+            }
+            
+            .activity-content {
+                padding: 1rem;
+            }
+            
+            .activity-content h4 {
+                font-size: 1.2rem;
+            }
+            
+            .activity-content p {
+                font-size: 0.85rem;
+            }
+            
+            .activity-content li {
+                font-size: 0.8rem;
+            }
+            
+            .why-help {
+                padding: 1rem;
+            }
+            .why-help h2 {
+                font-size: 1.2rem;
+            }
+            .why-help li {
+                font-size: 0.85rem;
+                padding: 0.4rem 0 0.4rem 1.5rem;
+            }
+            .weekly-plan-sand {
+                padding: 1rem;
+            }
+            .weekly-plan-sand h2 {
+                font-size: 1.2rem;
+            }
+            .plan-table-sand th,
+            .plan-table-sand td {
+                padding: 8px 10px;
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .activity-image {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Главная</a></li>
+                    <li><a href="lectures.html" class="nav-link">Лекции</a></li>
+                    <li><a href="izotherapy.html" class="nav-link">Изотерапия</a></li>
+                    <li><a href="sand-therapy.html" class="nav-link active">Песочная терапия</a></li>
+                    <li><a href="meditation.html" class="nav-link">Медитация</a></li>
+                    <li><a href="music-therapy.html" class="nav-link">Музыкотерапия</a></li>
+                    <li><a href="anti-stress.html" class="nav-link">Антистресс</a></li>
+                    <li><a href="activities.html" class="nav-link">Полезные активности</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1 class="section-header">🏝 Песочная терапия: строй свою жизнь без риска</h1>
+            
+            <div class="info-note">
+                Песочная терапия — это способ выразить свои чувства и мысли через создание композиций из песка. Не нужно уметь рисовать или лепить: ты просто строишь то, что приходит в голову.
+            </div>
+
+            <h2>Как это работает:</h2>
+            <ul class="styled-list">
+                <li>песок тактильно успокаивает — когда трогаешь его, снижается стресс;</li>
+                <li>ты можешь «проиграть» сложные ситуации без слов;</li>
+                <li>видишь результат сразу: за 10–15 минут создаёшь целый мир;</li>
+                <li>учишься решать проблемы: если что-то не получилось, можно переделать — так же и в жизни.</li>
+            </ul>
+
+            <!-- Слайдер с занятиями и кнопками навигации -->
+            <h2>📋 Занятия песочной терапии</h2>
+            <div class="swiper sand-activities-swiper">
+                <div class="swiper-wrapper">
+                    <!-- Занятие 1 -->
+                    <div class="swiper-slide activity-slide">
+                        <div class="activity-horizontal-card">
+                            <div class="activity-image">
+                                <img src="./img/SandTherapy4.jpg" alt="Песочная терапия занятие 1">
+                            </div>
+                            <div class="activity-content">
+                                <h4>🏰 Занятие 1. «Мой мир сейчас»</h4>
+                                <p>Рассмотри фигурки. Выбери те, что отражают твою жизнь сейчас (школа, семья, друзья, хобби). Создай композицию в лотке: где ты сам, кто рядом, что вокруг.</p>
+                                <p>Добавь 1–2 элемента, символизирующих риск (бутылка, сигарета, группа сомнительных людей).</p>
+                                <p>Теперь измени сцену: убери или отодвинь «опасные» элементы, добавь то, что даёт защиту (дом, друг, спортплощадка).</p>
+                                <p>Расскажи (или запиши) историю получившегося мира: «Раньше здесь было… Теперь здесь есть… Я чувствую…».</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Занятие 2 -->
+                    <div class="swiper-slide activity-slide">
+                        <div class="activity-horizontal-card">
+                            <div class="activity-image">
+                                <img src="./img/SandTherapy2.jpg" alt="Песочная терапия занятие 2">
+                            </div>
+                            <div class="activity-content">
+                                <h4>🧱 Занятие 2. «Стена против риска»</h4>
+                                <p>Из песка построй высокую стену.</p>
+                                <p>Укрась её «кирпичиками» из камешков/бусин — каждый символизирует твою силу:</p>
+                                <ul class="instruction-list">
+                                    <li>«Я умею говорить „нет“»</li>
+                                    <li>«У меня есть друзья, которые поддерживают»</li>
+                                    <li>«Я хочу стать врачом/спортсменом/музыкантом»</li>
+                                    <li>«Мне нравится кататься на скейте, а не стоять с сигаретой»</li>
+                                </ul>
+                                <p>Перед стеной размести фигурки, изображающие соблазны (алкоголь, сигареты, компания с вредными привычками).</p>
+                                <p>Подумай, как укрепить стену: добавь ещё «кирпичиков» или построй ров с водой (песком).</p>
+                                <p>Произнеси вслух: «Эта стена защищает меня от…»</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Занятие 3 -->
+                    <div class="swiper-slide activity-slide">
+                        <div class="activity-horizontal-card">
+                            <div class="activity-image">
+                                <img src="./img/SandTherapy3.jpg" alt="Песочная терапия занятие 3">
+                            </div>
+                            <div class="activity-content">
+                                <h4>🛤️ Занятие 3. «Путь от риска к мечте»</h4>
+                                <p>Раздели лоток на две части:</p>
+                                <ul class="instruction-list">
+                                    <li><strong>левая</strong> — «Путь риска» (алкоголь/наркотики/курение)</li>
+                                    <li><strong>правая</strong> — «Путь мечты» (спорт, учёба, творчество)</li>
+                                </ul>
+                                <p>Проложи дорожки от фигурки «я сейчас» к обеим зонам:</p>
+                                <ul class="instruction-list">
+                                    <li>по левой дорожке разложи символы проблем (больница, ссора с родителями, плохая оценка)</li>
+                                    <li>по правой — символы достижений (медаль, диплом, гитара)</li>
+                                </ul>
+                                <p>Реши, куда пойдёт фигурка. Перемести её по выбранной дорожке.</p>
+                                <p>Дополни сцену деталями: что нужно сделать сегодня, чтобы завтра оказаться на «пути мечты»?</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Занятие 4 -->
+                    <div class="swiper-slide activity-slide">
+                        <div class="activity-horizontal-card">
+                            <div class="activity-image">
+                                <img src="./img/SandTherapy1.jpg" alt="Песочная терапия занятие 4">
+                            </div>
+                            <div class="activity-content">
+                                <h4>🏝️ Занятие 4. «Остров безопасности»</h4>
+                                <p>Сформируй из песка остров. Окружи его «водой» (голубая бумага или синий песок).</p>
+                                <p>Построй на острове то, что дарит покой:</p>
+                                <ul class="instruction-list">
+                                    <li>шалаш для уединения</li>
+                                    <li>футбольные ворота</li>
+                                    <li>сцену для выступлений</li>
+                                    <li>костёр для встреч с друзьями</li>
+                                </ul>
+                                <p>Размести на острове фигурку «я».</p>
+                                <p>Представь, что ты попал сюда, когда очень хочется поддаться давлению сверстников. Что ты здесь делаешь? Что чувствуешь?</p>
+                                <p>Запиши 3 правила посещения «острова»:</p>
+                                <ul class="instruction-list">
+                                    <li>«Когда мне плохо, я иду сюда в мыслях…»</li>
+                                    <li>«Здесь я вспоминаю, что…»</li>
+                                    <li>«Если сложно, я звоню…»</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Занятие 5 -->
+                    <div class="swiper-slide activity-slide">
+                        <div class="activity-horizontal-card">
+                            <div class="activity-image">
+                                <img src="./img/SandTherapy5.jpg" alt="Песочная терапия занятие 5">
+                            </div>
+                            <div class="activity-content">
+                                <h4>🌆 Занятие 5. «Город будущего без риска»</h4>
+                                <p>Построй город мечты:</p>
+                                <ul class="instruction-list">
+                                    <li>районы спорта (стадион, велодорожки)</li>
+                                    <li>творческие кварталы (студия звукозаписи, артмастерская)</li>
+                                    <li>зоны отдыха (парк, кафе с настольными играми)</li>
+                                    <li>школы и вузы</li>
+                                </ul>
+                                <p>Убери или перестрой «опасные» зоны (бары, места тусовок с вредными привычками).</p>
+                                <p>На цветных карточках напиши: 3 мероприятия города («Фестиваль граффити», «Турнир по стритболу»), 2 правила для жителей («Говорить „нет“ алкоголю», «Помогать тем, кто хочет бросить курить»). Размести карточки в городе.</p>
+                                <p>Создай «команду мэра»: выбери 3 фигурки — это твои союзники в реальной жизни (друг, учитель, тренер).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Кнопки навигации -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <!-- Блок "Почему это помогает отказаться от риска" -->
+            <div class="why-help">
+                <h2>🌟 Почему это помогает отказаться от риска (алкоголь, наркотики, курение):</h2>
+                <ul>
+                    <li>даёт безопасный способ снять напряжение — вместо того, чтобы идти «за компанию» курить, ты можешь поиграть с песком;</li>
+                    <li>заполняет свободное время интересным делом;</li>
+                    <li>повышает уверенность в себе: «Я создал целый город!» → «Я могу справиться и с другими задачами»;</li>
+                    <li>помогает понять, что именно тебя толкает к риску (скука, давление друзей, стресс);</li>
+                    <li>создаёт ощущение контроля: ты управляешь песком — значит, можешь управлять и своими решениями.</li>
+                </ul>
+            </div>
+
+            <!-- Блок "Как организовать занятость через песочную терапию. План на неделю" -->
+            <div class="weekly-plan-sand">
+                <h2>📅 Как организовать занятость через песочную терапию. План на неделю:</h2>
+                <table class="plan-table-sand">
+                    <thead>
+                        <tr>
+                            <th>День</th>
+                            <th>Задача</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="day-cell">Понедельник</td>
+                            <td class="task-cell">«Мой мир сейчас» (15 мин утром — настрой на день)</td>
+                        </tr>
+                        <tr>
+                            <td class="day-cell">Среда</td>
+                            <td class="task-cell">«Стена против риска» (после школы — профилактика вечерних соблазнов)</td>
+                        </tr>
+                        <tr>
+                            <td class="day-cell">Пятница</td>
+                            <td class="task-cell">«Путь от риска к мечте» (планирование выходных)</td>
+                        </tr>
+                        <tr>
+                            <td class="day-cell">Воскресенье</td>
+                            <td class="task-cell">«Остров безопасности» + «Город будущего» (подведение итогов недели)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-note">
+                <strong>Главное:</strong> песочная терапия помогает снять напряжение, повышает уверенность и даёт ощущение контроля.
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© Творчество против зависимости — цифровой арт-диалог | За здоровое будущее</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="main.js"></script>
+    <script>
+        // Слайдер для занятий песочной терапии с кнопками навигации
+        const activitiesSwiper = new Swiper(".sand-activities-swiper", {
+            loop: true,
+            autoplay: {
+                delay: 8000,
+                disableOnInteraction: false,
+            },
+            spaceBetween: 30,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            slidesPerView: 1,
+            centeredSlides: true,
+            speed: 800,
+            grabCursor: true,
+        });
+    </script>
+</body>
+</html>

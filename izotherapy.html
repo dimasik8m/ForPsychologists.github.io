@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Изотерапия | Творчество против зависимости</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Дополнительные стили для страницы изотерапии */
+        .when-use {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-radius: 28px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 6px solid #f59e0b;
+        }
+        
+        .when-use h2 {
+            color: #92400e;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .when-use ul {
+            list-style: none;
+            margin: 0;
+        }
+        
+        .when-use li {
+            padding: 0.5rem 0 0.5rem 1.8rem;
+            position: relative;
+            color: #78350f;
+        }
+        
+        .when-use li::before {
+            content: "💡";
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+        }
+        
+        .weekly-plan {
+            background: white;
+            border-radius: 28px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e9e4ff;
+        }
+        
+        .weekly-plan h2 {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .plan-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .plan-table th {
+            background: var(--primary-light);
+            color: white;
+            padding: 12px 16px;
+            font-weight: 600;
+            text-align: left;
+        }
+        
+        .plan-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e9e4ff;
+            vertical-align: top;
+        }
+        
+        .plan-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .plan-table tr:hover {
+            background: #faf5ff;
+        }
+        
+        .day-cell {
+            font-weight: 600;
+            color: var(--primary-dark);
+            width: 15%;
+        }
+        
+        .tech-cell {
+            width: 20%;
+            color: #8b5cf6;
+        }
+        
+        .task-cell {
+            width: 65%;
+        }
+        
+        @media (max-width: 768px) {
+            .plan-table th,
+            .plan-table td {
+                padding: 8px 10px;
+                font-size: 0.85rem;
+            }
+            .day-cell,
+            .tech-cell,
+            .task-cell {
+                width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Главная</a></li>
+                    <li><a href="lectures.html" class="nav-link">Лекции</a></li>
+                    <li><a href="izotherapy.html" class="nav-link active">Изотерапия</a></li>
+                    <li><a href="sand-therapy.html" class="nav-link">Песочная терапия</a></li>
+                    <li><a href="meditation.html" class="nav-link">Медитация</a></li>
+                    <li><a href="music-therapy.html" class="nav-link">Музыкотерапия</a></li>
+                    <li><a href="anti-stress.html" class="nav-link">Антистресс</a></li>
+                    <li><a href="activities.html" class="nav-link">Полезные активности</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1 class="section-header">🎨 Изотерапия</h1>
+            
+            <div class="info-note">
+                Изотерапия — это способ разобраться в своих чувствах с помощью творчества. Не нужно быть художником: главное — выразить то, что внутри, а не нарисовать «красиво».
+            </div>
+
+            <h2>Как это работает:</h2>
+            <ul class="styled-list">
+                <li>Когда мы рисуем, лепим или создаём что-то, эмоции выходят наружу без слов.</li>
+                <li>Творчество снимает стресс — вместо того, чтобы «заедать» или «запивать» проблемы, ты выплёскиваешь их на бумагу или в песок.</li>
+                <li>Ты находишь новое хобби, которое занимает время и отвлекает от плохих компаний.</li>
+                <li>Видишь свой прогресс: сегодня нарисовал хмурое небо, завтра — солнце. Значит, настроение улучшается!</li>
+            </ul>
+
+            <h2>Почему это помогает отказаться от риска (алкоголь, наркотики, курение):</h2>
+            <ul class="styled-list check-list">
+                <li>даёт безопасный способ снять напряжение;</li>
+                <li>заполняет свободное время интересным делом;</li>
+                <li>повышает самооценку: «Я создал это сам!»;</li>
+                <li>помогает понять, что именно тебя толкает к риску (скука, стресс, давление друзей);</li>
+                <li>создаёт круг единомышленников — тех, кто выбирает творчество, а не вредные привычки.</li>
+            </ul>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <h4>🎨 Техника эбру: рисование на воде</h4>
+                    <h5>Задание «Мой стресс — мой узор»</h5>
+                    <p>Нанеси несколько капель краски на воду — пусть это будут цвета, которые ассоциируются у тебя со стрессом (например, серый, чёрный, красный). Гребнем создай узор — представляй, что «распутываешь» тревожные мысли. Перенеси изображение на бумагу. Теперь добавь яркие цвета (голубой, жёлтый, зелёный) — это твои ресурсы: друзья, хобби, мечты. Снова перенеси узор на бумагу. Сравни два рисунка. Видишь, как меняется картина, когда добавляешь «свет»?</p>
+                </div>
+                <div class="card">
+                    <h4>🌀 Мандалотерапия: круги гармонии</h4>
+                    <h5>Задание «Мандала выбора»</h5>
+                    <p>Раздели круг на 4 сектора. В каждом нарисуй символы:<br>
+                    <strong>сектор 1:</strong> что меня толкает к риску (изображения сигарет, алкоголя, толпы);<br>
+                    <strong>сектор 2:</strong> что я теряю из‑за этого (разбитое сердце — отношения, часы — время, книга — учёба);<br>
+                    <strong>сектор 3:</strong> что мне даёт силы сказать «нет» (спорт, музыка, друзья, семья);<br>
+                    <strong>сектор 4:</strong> мои цели (мечта о путешествии, поступление в вуз, победа в соревнованиях).<br>
+                    Заполни фон узорами — пусть они соединяют сектора в единую картину. Повесь мандалу на видное место как напоминание: «У меня есть выбор».</p>
+                </div>
+                <div class="card">
+                    <h4>📅 Ежедневная мандала</h4>
+                    <h5>Задание «Дневник настроения»</h5>
+                    <p>Каждый день рисуй маленькую мандалу (диаметр 10 см):<br>
+                    утром — цвет настроения;<br>
+                    вечером — главная эмоция дня;<br>
+                    в конце недели сравни: какие цвета встречаются чаще? Где было больше ярких оттенков? Это покажет, какие дни были удачными.</p>
+                </div>
+            </div>
+
+            <!-- Блок "Когда использовать" -->
+            <div class="when-use">
+                <h2>📌 Когда использовать:</h2>
+                <ul>
+                    <li>если чувствуешь давление сверстников («Да ладно, один раз не считается!»);</li>
+                    <li>когда скучно и нечем заняться;</li>
+                    <li>чтобы проанализировать, что именно провоцирует желание рискнуть.</li>
+                </ul>
+            </div>
+
+            <!-- Блок "План на неделю" -->
+            <div class="weekly-plan">
+                <h2>🗓 Как организовать занятость через арт-терапию? План на неделю:</h2>
+                <table class="plan-table">
+                    <thead>
+                        <tr>
+                            <th>День</th>
+                            <th>Техника</th>
+                            <th>Задача</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="day-cell">Понедельник</td>
+                            <td class="tech-cell">Эбру</td>
+                            <td class="task-cell">Создать узор «Моё настроение сегодня»</td>
+                        </tr>
+                        <tr>
+                            <td class="day-cell">Вторник</td>
+                            <td class="tech-cell">Мандала</td>
+                            <td class="task-cell">Нарисовать «Круг моих ресурсов» (что/кто меня поддерживает)</td>
+                        </tr>
+                        <tr>
+                            <td class="day-cell">Среда</td>
+                            <td class="tech-cell">Эбру + мандала</td>
+                            <td class="task-cell">Перенести узор эбру на бумагу, вписать в круг, дорисовать символы успеха</td>
+                        </tr>
+                        <tr>
+                            <td class="day-cell">Четверг</td>
+                            <td class="tech-cell">Мандала</td>
+                            <td class="task-cell">«Мой безопасный мир» — место, где я чувствую себя защищённым</td>
+                        </tr>
+                        <tr>
+                            <td class="day-cell">Пятница</td>
+                            <td class="tech-cell">Эбру</td>
+                            <td class="task-cell">«Цвет моего стресса» → «Цвет моего спокойствия» (два рисунка)</td>
+                        </tr>
+                        <tr>
+                            <td class="day-cell">Суббота</td>
+                            <td class="tech-cell">Творческий микс</td>
+                            <td class="task-cell">Сделать коллаж из работ недели: вырезать фрагменты эбру и мандал, склеить в композицию «Я выбираю жизнь»</td>
+                        </tr>
+                        <tr>
+                            <td class="day-cell">Воскресенье</td>
+                            <td class="tech-cell">Рефлексия</td>
+                            <td class="task-cell">
+                                Посмотреть все работы. Ответить на вопросы:<br>
+                                — Какой день был самым сложным?<br>
+                                — Где я почувствовал(а) гордость за себя?<br>
+                                — Что точно не буду делать на следующей неделе?
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Блок "Главное" -->
+            <div class="info-note">
+                <strong>Главное:</strong> Изотерапия — не волшебная таблетка, а инструмент. Чем чаще ты им пользуешься, тем легче становится говорить «нет» вредным привычкам и «да» интересной жизни.
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© Творчество против зависимости — цифровой арт-диалог | За здоровое будущее</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

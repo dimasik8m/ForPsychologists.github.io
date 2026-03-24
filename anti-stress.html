@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Антистресс игрушки | Творчество против зависимости</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-gradient: linear-gradient(145deg, #faf5ff 0%, #f3e8ff 100%);
+            --card-white: #ffffff;
+            --primary: #8b5cf6;
+            --primary-dark: #6d28d9;
+            --primary-light: #c4b5fd;
+            --primary-soft: #ede9fe;
+            --text-dark: #1e1b2e;
+            --text-muted: #5b5b7a;
+            --shadow-sm: 0 12px 30px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 20px 35px -12px rgba(109, 40, 217, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-dark);
+            line-height: 1.5;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: rgba(30, 27, 46, 0.95);
+            backdrop-filter: blur(16px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.8rem 1.5rem;
+        }
+
+        .nav-container {
+            width: 100%;
+        }
+
+        .nav-menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .nav-menu li a {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 40px;
+            color: #f1f5f9;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        .nav-menu li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .nav-menu li a.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+        }
+
+        main {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 3rem;
+            overflow-x: hidden;
+        }
+
+        /* Hero section */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1rem 1rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #2d2b3a, #6d28d9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #5b5b7a;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-description {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #4a4a5e;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .hero-description strong {
+            color: #6d28d9;
+        }
+
+        /* Cards grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0 2.5rem;
+        }
+
+        .card {
+            background: var(--card-white);
+            border-radius: 28px;
+            padding: 1.3rem;
+            box-shadow: var(--shadow-sm);
+            transition: 0.25s;
+            border: 1px solid #e9e4ff;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .card h4 {
+            color: var(--primary-dark);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Section headers */
+        .section-header {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 2rem 0 1.2rem 0;
+            border-left: 5px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        /* Info note */
+        .info-note {
+            background: var(--primary-soft);
+            border-left: 6px solid var(--primary);
+            padding: 1rem 1.5rem;
+            border-radius: 24px;
+            margin: 1.5rem 0;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        /* Types grid */
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .type-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.2rem;
+            border: 1px solid #ece3db;
+            transition: 0.2s;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .type-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary-light);
+        }
+
+        .type-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .type-content {
+            flex: 1;
+        }
+
+        .type-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+
+        .type-desc {
+            color: #4b4743;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        /* Table */
+        .styled-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: #ffffffd9;
+            border-radius: 1.8rem;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            margin: 1.5rem 0;
+        }
+
+        .styled-table th {
+            background: var(--primary-light);
+            padding: 1rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #2b2520;
+            text-align: left;
+        }
+
+        .styled-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #f0e7df;
+            vertical-align: top;
+        }
+
+        .styled-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Video grid */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: 0.2s;
+            border: 1px solid #e7dfd7;
+        }
+
+        .video-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: #000;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-caption {
+            padding: 0.7rem 1rem;
+            font-weight: 500;
+            font-size: 0.85rem;
+            background: white;
+            color: #3d3935;
+            text-align: center;
+            border-top: 1px solid #f0e4d8;
+        }
+
+        /* Swiper styles - ИСПРАВЛЕННЫЕ */
+        .swiper-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            margin: 1.5rem 0 2.5rem;
+            padding: 0 0.5rem;
+        }
+
+        .swiper {
+            width: 100%;
+            overflow: visible;
+        }
+
+        .swiper-wrapper {
+            display: flex;
+        }
+
+        .swiper-slide {
+            height: auto;
+            flex-shrink: 0;
+        }
+
+        .sand-card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            min-height: 200px;
+            border: 1px solid #e9e4ff;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .sand-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-light);
+        }
+
+        .sand-card h4 {
+            color: var(--primary-dark);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .sand-card p {
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .swiper-pagination {
+            position: relative;
+            bottom: auto;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .swiper-pagination-bullet {
+            background: var(--primary-light);
+            opacity: 0.5;
+            width: 8px;
+            height: 8px;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: var(--primary);
+            opacity: 1;
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: var(--text-muted);
+            border-top: 1px solid #e0d4f0;
+            margin-top: 2rem;
+            background: rgba(255,255,255,0.4);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.2rem; }
+            .section-header { font-size: 1.5rem; }
+            .type-card { padding: 1rem; }
+            .type-icon { font-size: 1.6rem; }
+            .cards-grid { gap: 1rem; }
+            .card { padding: 1rem; }
+            .sand-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Главная</a></li>
+                    <li><a href="lectures.html" class="nav-link">Лекции</a></li>
+                    <li><a href="izotherapy.html" class="nav-link">Изотерапия</a></li>
+                    <li><a href="sand-therapy.html" class="nav-link">Песочная терапия</a></li>
+                    <li><a href="meditation.html" class="nav-link">Медитация</a></li>
+                    <li><a href="music-therapy.html" class="nav-link">Музыкотерапия</a></li>
+                    <li><a href="anti-stress.html" class="nav-link active">Антистресс</a></li>
+                    <li><a href="activities.html" class="nav-link">Полезные активности</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Заголовок -->
+        <div class="hero-section">
+            <h1 class="hero-title">🧸 Сенсорная гармония</h1>
+            <p class="hero-subtitle">Игрушки-антистресс: мягкое прикосновение к внутреннему спокойствию</p>
+            <div class="hero-description">
+                Игрушки антистресс — это небольшие предметы, которые можно мять, крутить, перебирать в руках, чтобы снять напряжение и успокоиться. Они дарят <strong>тактильную разгрузку</strong> и возвращают в состояние здесь и сейчас.
+            </div>
+        </div>
+
+        <!-- Подробные карточки преимуществ -->
+        <div class="cards-grid">
+            <div class="card">
+                <span class="card-icon">🌸</span>
+                <h4>снизить тревожность</h4>
+                <p>Мягкие текстуры помогают успокоить нервную систему.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🎯</span>
+                <h4>сосредоточиться</h4>
+                <p>Тактильный фидбек улучшает фокус внимания.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🧘</span>
+                <h4>отвлечься от мыслей</h4>
+                <p>Переключение на ощущения дарит паузу.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🖐️</span>
+                <h4>занять руки</h4>
+                <p>Идеально в моменты волнения или скуки.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🔄</span>
+                <h4>заменить привычки</h4>
+                <p>Альтернатива вредным привычкам, успокаивает.</p>
+            </div>
+        </div>
+
+        <!-- Виды игрушек-антистресс -->
+        <h2 class="section-header">🌀 Виды игрушек-антистресс</h2>
+        <div class="types-grid">
+            <div class="type-card">
+                <div class="type-icon">🌀</div>
+                <div class="type-content">
+                    <div class="type-title">Сквиши</div>
+                    <div class="type-desc">Мягкие сжимаемые игрушки, наполненные пенопластом, синтепоном. Возвращаются в форму.</div>
+                </div>
+            </div>
+            <div class="type-card">
+                <div class="type-icon">🎲</div>
+                <div class="type-content">
+                    <div class="type-title">Фиджет-кубы</div>
+                    <div class="type-desc">Кубики с кнопками, колёсиками, переключателями для разного тактильного опыта.</div>
+                </div>
+            </div>
+            <div class="type-card">
+                <div class="type-icon">🌸</div>
+                <div class="type-content">
+                    <div class="type-title">Сенсорные мешочки</div>
+                    <div class="type-desc">Тканевые мешочки с крупами, бисером, песком. Приятно перебирать пальцами.</div>
+                </div>
+            </div>
+            <div class="type-card">
+                <div class="type-icon">✨</div>
+                <div class="type-content">
+                    <div class="type-title">Эластичные игрушки</div>
+                    <div class="type-desc">Растягиваются в стороны, затем возвращаются — тянучки, резиновые фигурки.</div>
+                </div>
+            </div>
+            <div class="type-card">
+                <div class="type-icon">⚪</div>
+                <div class="type-content">
+                    <div class="type-title">Шары-антистресс</div>
+                    <div class="type-desc">Резиновые шары с гелевым наполнителем, создают приятное сопротивление.</div>
+                </div>
+            </div>
+            <div class="type-card">
+                <div class="type-icon">🌀</div>
+                <div class="type-content">
+                    <div class="type-title">Спирографы & лабиринты</div>
+                    <div class="type-desc">Передвижение шарика по дорожке требует концентрации и успокаивает.</div>
+                </div>
+            </div>
+            <div class="type-card">
+                <div class="type-icon">🧲</div>
+                <div class="type-content">
+                    <div class="type-title">Магнитные конструкторы</div>
+                    <div class="type-desc">Наборы шариков или пластин — развивают моторику и воображение.</div>
+                </div>
+            </div>
+            <div class="type-card">
+                <div class="type-icon">⌚</div>
+                <div class="type-content">
+                    <div class="type-title">Браслеты-фиджеты</div>
+                    <div class="type-desc">Браслеты с подвижными бусинами, шестерёнками, крутите на запястье.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Таблица с ситуациями -->
+        <h2 class="section-header">📋 Как использовать в повседневной жизни</h2>
+        <table class="styled-table">
+            <thead>
+                <tr><th>Ситуация</th><th>Какая игрушка подойдёт</th><th>Действие</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>📚 Перед экзаменом</td><td>Сквиши или сенсорный мешочек</td><td>Помять в руках 2–3 минуты, сосредоточиться на ощущениях</td></tr>
+                <tr><td>😴 На скучном уроке</td><td>Браслет-фиджет или фиджет-куб</td><td>Крутить бусину на браслете, нажимать кнопки на кубе</td></tr>
+                <tr><td>💔 После ссоры с друзьями</td><td>Эластичная тянучка</td><td>Растягивать и отпускать, пока не успокоишься</td></tr>
+                <tr><td>🌙 Вечером перед сном</td><td>Шар-антистресс или мешочек с крупой</td><td>Медленно перебирать пальцами, дышать ровно</td></tr>
+                <tr><td>🚇 В транспорте (волнение в толпе)</td><td>Мини-сквиши (размером с монету)</td><td>Держать в кармане и сжимать незаметно</td></tr>
+            </tbody>
+        </table>
+
+        <div class="info-note">
+            💡 <strong>Главное:</strong> игрушка антистресс не решит проблему сама по себе, но поможет взять паузу, успокоиться и принять верное решение вместо рискованного поступка.
+        </div>
+
+        <!-- Видео-подборка -->
+        <h2 class="section-header">📺 Тактильное вдохновение: видео-подборка</h2>
+        <div class="video-grid">
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/8pMKTVrHM1Y" title="Капитошка антистресс" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-caption">🐙 Антистресс Игрушка "Капитошка" — мягкий сквиш-персонаж</div>
+            </div>
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/tZ7uPz8JBbQ" title="Симпл-димпл антистресс" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-caption">🔘 Антистресс Игрушка «Симпл-димпл» — сенсорное удовольствие</div>
+            </div>
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/Fnx8ApcTNdw" title="Антистресс игрушка обзор" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-caption">🧘 Яркий антистресс — снимаем напряжение</div>
+            </div>
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/0oxSZ7GKduc?si=0mOM10fqHoA6MW_V" title="Антистресс игрушка из бумаги" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-caption">📄 Игрушка антистресс из бумаги — сделай сам</div>
+            </div>
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/DOj1yGAbnC8" title="Антистресс хит" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-caption">✨ Популярный антистресс — тактильный релакс</div>
+            </div>
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/aZYMbaQ5-Ro" title="Филин антистресс" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-caption">🦉 Антистресс Игрушка "Филин" — тянучка с характером</div>
+            </div>
+        </div>
+
+        <!-- Сенсорные практики Swiper (ИСПРАВЛЕННЫЙ) -->
+        <h2 class="section-header">🌿 Сенсорные практики: идеи для спокойствия</h2>
+        <div class="swiper-container">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="sand-card">
+                            <h4>🧘 Дыхание + сквиш</h4>
+                            <p>На вдохе сжимай игрушку, на выдохе расслабляй руку. 5 циклов снижают тревогу и возвращают в состояние покоя.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="sand-card">
+                            <h4>🎨 Мешочек с рисом</h4>
+                            <p>Пальчиками перебирайте крупу, представляя, как напряжение уходит с каждым зернышком. Идеально перед сном.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="sand-card">
+                            <h4>🌀 Фиджет-куб на встрече</h4>
+                            <p>Незаметно нажимайте кнопки или крутите диск — повышает концентрацию и снижает нервное напряжение.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="sand-card">
+                            <h4>🌙 Лабиринт-спирограф</h4>
+                            <p>Перед сном проведите шарик по дорожке, фокусируясь на плавных движениях. Медитативный эффект гарантирован.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="sand-card">
+                            <h4>✨ Тактильный мешочек</h4>
+                            <p>Носите с собой маленький мешочек с разными текстурами. В моменты стресса просто перебирайте содержимое.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        🌸 Сенсорная гармония — делайте паузу, дышите, трогайте. Игрушки антистресс для баланса и фокуса.<br>
+        <span style="font-size: 0.7rem;">© Тактильная терапия | Вдохновляйтесь и заботьтесь о себе</span>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const swiper = new Swiper('.swiper', {
+                loop: true,
+                slidesPerView: 1,
+                spaceBetween: 20,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                autoplay: {
+                    delay: 4000,
+                    disableOnInteraction: false,
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 25,
+                    }
+                },
+                speed: 600,
+                effect: 'slide',
+                grabCursor: true,
+            });
+        });
+    </script>
+</body>
+</html>

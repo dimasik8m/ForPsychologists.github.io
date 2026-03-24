@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная | Творчество против зависимости</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Специальные стили ТОЛЬКО для главной страницы */
+        body {
+            background: linear-gradient(145deg, #faf5ff 0%, #f3e8ff 100%);
+        }
+        
+        .hero {
+            background-size: cover;
+            background-position: center;
+            min-height: 65vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 1rem 0;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 50rem;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(8px);
+            border-radius: 32px;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            margin: 0.5rem;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+        }
+        
+        .hero-title {
+            font-size: 1.9rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+        
+        .hero-text {
+            font-size: 1rem;
+            color: #2d2b3a;
+            margin-bottom: 1.2rem;
+            line-height: 1.45;
+        }
+        
+        .btn-instagram {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+            padding: 0.65rem 1.5rem;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-instagram::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn-instagram:hover::before {
+            left: 100%;
+        }
+        
+        .btn-instagram:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        }
+        
+        .instagram-icon {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .arrow-icon {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-instagram:hover .arrow-icon {
+            transform: translateX(4px);
+        }
+        
+        /* Секция с карточками разделов */
+        .sections-section {
+            padding: 1rem 1.5rem 2rem;
+            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+        }
+        
+        .sections-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        
+        .sections-title {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.3rem;
+        }
+        
+        .sections-subtitle {
+            text-align: center;
+            color: #5b5b7a;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Сетка для первых 4 карточек */
+        .first-four-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Сетка для последних 3 карточек - центрированная */
+        .last-three-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+        
+        .section-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.2rem;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            border: 1px solid #f0e4ff;
+            display: block;
+            flex: 0 1 270px;
+        }
+        
+        .section-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 24px rgba(109, 40, 217, 0.1);
+            border-color: #c4b5fd;
+        }
+        
+        .card-icon {
+            font-size: 2.2rem;
+            margin-bottom: 0.6rem;
+            display: inline-block;
+        }
+        
+        .section-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #2d2b3a;
+            margin-bottom: 0.4rem;
+        }
+        
+        .section-card p {
+            font-size: 0.8rem;
+            color: #6b6b8a;
+            line-height: 1.4;
+            margin-bottom: 0.8rem;
+        }
+        
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: #8b5cf6;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: gap 0.3s ease;
+        }
+        
+        .section-card:hover .card-link {
+            gap: 8px;
+        }
+        
+        .card-link svg {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.3s ease;
+        }
+        
+        .section-card:hover .card-link svg {
+            transform: translateX(3px);
+        }
+        
+        /* Разные цвета для иконок карточек */
+        .card-icon.lectures { color: #8b5cf6; }
+        .card-icon.art { color: #ec489a; }
+        .card-icon.sand { color: #f59e0b; }
+        .card-icon.meditation { color: #10b981; }
+        .card-icon.music { color: #3b82f6; }
+        .card-icon.anti-stress { color: #ef4444; }
+        .card-icon.activities { color: #14b8a6; }
+        
+        /* Футер с минимальными отступами */
+        .footer {
+            padding: 1rem;
+            border-top: 1px solid #e0d4f0;
+            margin-top: 0;
+            font-size: 0.75rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .first-four-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.2rem;
+            }
+            .last-three-grid {
+                gap: 1.2rem;
+            }
+            .section-card {
+                flex: 0 1 calc(33.33% - 1rem);
+                min-width: 220px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 55vh;
+                padding: 0.5rem 0;
+            }
+            .hero-title {
+                font-size: 1.2rem;
+            }
+            .hero-content {
+                padding: 1rem 1.2rem;
+                margin: 0.3rem;
+            }
+            .hero-text {
+                font-size: 0.85rem;
+                margin-bottom: 1rem;
+            }
+            .btn-instagram {
+                padding: 0.5rem 1rem;
+                font-size: 0.75rem;
+                gap: 5px;
+            }
+            .instagram-icon {
+                width: 16px;
+                height: 16px;
+            }
+            .arrow-icon {
+                width: 14px;
+                height: 14px;
+            }
+            .sections-section {
+                padding: 0.8rem 1rem 1.5rem;
+            }
+            .sections-title {
+                font-size: 1.3rem;
+                margin-bottom: 0.2rem;
+            }
+            .sections-subtitle {
+                font-size: 0.75rem;
+                margin-bottom: 1rem;
+            }
+            .first-four-grid {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+                margin-bottom: 1.5rem;
+            }
+            .last-three-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+            }
+            .section-card {
+                flex: none;
+                width: 100%;
+                max-width: 100%;
+                padding: 1rem;
+            }
+            .card-icon {
+                font-size: 1.8rem;
+                margin-bottom: 0.4rem;
+            }
+            .section-card h3 {
+                font-size: 0.95rem;
+                margin-bottom: 0.3rem;
+            }
+            .section-card p {
+                font-size: 0.7rem;
+                margin-bottom: 0.6rem;
+            }
+            .footer {
+                padding: 0.8rem;
+                font-size: 0.65rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1rem;
+            }
+            .hero-content {
+                padding: 0.8rem 1rem;
+            }
+            .sections-title {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link active">Главная</a></li>
+                    <li><a href="lectures.html" class="nav-link">Лекции</a></li>
+                    <li><a href="izotherapy.html" class="nav-link">Изотерапия</a></li>
+                    <li><a href="sand-therapy.html" class="nav-link">Песочная терапия</a></li>
+                    <li><a href="meditation.html" class="nav-link">Медитация</a></li>
+                    <li><a href="music-therapy.html" class="nav-link">Музыкотерапия</a></li>
+                    <li><a href="anti-stress.html" class="nav-link">Антистресс</a></li>
+                    <li><a href="activities.html" class="nav-link">Полезные активности</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Герой-секция -->
+        <section class="hero" style="background-image: url('https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+            <div class="hero-content">
+                <h1 class="hero-title">МОЛОДЕЖНЫЙ СОЦИАЛЬНЫЙ ПРОЕКТ<br>«ТВОРЧЕСТВО ПРОТИВ ЗАВИСИМОСТИ: ЦИФРОВОЙ АРТ-ДИАЛОГ»</h1>
+                <p class="hero-text">Проект направлен на профилактику рискованного поведения среди подростков 15–21 года, обучающихся в колледже, посредством вовлечения их в творческую деятельность с применением цифровых инструментов.</p>
+                <a href="https://ig.me/m/ggkst_1" target="_blank" class="btn-instagram">
+                    <svg class="instagram-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.336 3.608 1.311.975.975 1.249 2.242 1.311 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.336 2.633-1.311 3.608-.975.975-2.242 1.249-3.608 1.311-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.336-3.608-1.311-.975-.975-1.249-2.242-1.311-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.336-2.633 1.311-3.608.975-.975 2.242-1.249 3.608-1.311 1.266-.058 1.646-.07 4.85-.07zM12 0C8.741 0 8.332.014 7.052.072 5.772.13 4.905.332 4.142.63c-.79.314-1.46.736-2.128 1.404-.668.668-1.09 1.338-1.404 2.128-.298.763-.5 1.63-.558 2.91C.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.058 1.28.26 2.147.558 2.91.314.79.736 1.46 1.404 2.128.668.668 1.338 1.09 2.128 1.404.763.298 1.63.5 2.91.558 1.28.058 1.689.072 4.948.072s3.668-.014 4.948-.072c1.28-.058 2.147-.26 2.91-.558.79-.314 1.46-.736 2.128-1.404.668-.668 1.09-1.338 1.404-2.128.298-.763.5-1.63.558-2.91.058-1.28.072-1.689.072-4.948s-.014-3.668-.072-4.948c-.058-1.28-.26-2.147-.558-2.91-.314-.79-.736-1.46-1.404-2.128-.668-.668-1.338-1.09-2.128-1.404-.763-.298-1.63-.5-2.91-.558C15.668.014 15.259 0 12 0z"/>
+                        <path d="M12 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
+                        <circle cx="18.406" cy="5.594" r="1.44"/>
+                    </svg>
+                    <span>Написать нам в Instagram</span>
+                    <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- Секция с карточками разделов -->
+        <section class="sections-section">
+            <div class="sections-container">
+                <h2 class="sections-title">✨ Выбери свой путь к гармонии</h2>
+                <p class="sections-subtitle">Каждый раздел поможет тебе найти безопасный способ справиться со стрессом и раскрыть свой потенциал</p>
+                
+                <!-- Первые 4 карточки -->
+                <div class="first-four-grid">
+                    <a href="lectures.html" class="section-card">
+                        <div class="card-icon lectures">📚</div>
+                        <h3>Лекции</h3>
+                        <p>Узнай о природе рискованного поведения, факторах риска и защиты, а также о том, как противостоять социальному давлению.</p>
+                        <span class="card-link">
+                            Перейти к лекциям
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </a>
+                    
+                    <a href="art-therapy.html" class="section-card">
+                        <div class="card-icon art">🎨</div>
+                        <h3>Арт-терапия</h3>
+                        <p>Рисование, мандалы, эбру — вырази свои эмоции через творчество. Не нужно быть художником, главное — искренность.</p>
+                        <span class="card-link">
+                            Перейти к арт-терапии
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </a>
+                    
+                    <a href="sand-therapy.html" class="section-card">
+                        <div class="card-icon sand">🏝️</div>
+                        <h3>Песочная терапия</h3>
+                        <p>Строй свои миры в песке, проигрывай сложные ситуации и находи безопасные решения без слов.</p>
+                        <span class="card-link">
+                            Перейти к песочной терапии
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </a>
+                    
+                    <a href="meditation.html" class="section-card">
+                        <div class="card-icon meditation">🧘</div>
+                        <h3>Медитация</h3>
+                        <p>Научись управлять своим вниманием, снижать тревожность и находить внутренний покой через дыхательные практики.</p>
+                        <span class="card-link">
+                            Перейти к медитации
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+                
+                <!-- Последние 3 карточки - центрированные -->
+                <div class="last-three-grid">
+                    <a href="music-therapy.html" class="section-card">
+                        <div class="card-icon music">🎵</div>
+                        <h3>Музыкотерапия</h3>
+                        <p>Погрузись в мир звуков, которые успокаивают, вдохновляют и помогают восстановить эмоциональный баланс.</p>
+                        <span class="card-link">
+                            Перейти к музыкотерапии
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </a>
+                    
+                    <a href="anti-stress.html" class="section-card">
+                        <div class="card-icon anti-stress">🧸</div>
+                        <h3>Антистресс</h3>
+                        <p>Создай свою игрушку-антистресс, узнай о разных видах сенсорных игрушек и научись снимать напряжение.</p>
+                        <span class="card-link">
+                            Перейти к антистресс
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </a>
+                    
+                    <a href="activities.html" class="section-card">
+                        <div class="card-icon activities">🌟</div>
+                        <h3>Полезные активности</h3>
+                        <p>Вдохновляйся идеями для творчества, спорта и новых увлечений, которые заменят рискованные занятия.</p>
+                        <span class="card-link">
+                            Перейти к активностям
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© Творчество против зависимости — цифровой арт-диалог | За здоровое будущее</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
